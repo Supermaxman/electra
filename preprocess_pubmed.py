@@ -2,7 +2,6 @@
 import argparse
 from util import utils
 import os
-import tensorflow.compat.v1 as tf
 import json
 
 
@@ -16,13 +15,14 @@ def main():
 
   utils.rmkdir(args.output_dir)
 
-  fnames = sorted(tf.io.gfile.listdir(args.corpus_dir))
+  fnames = sorted(os.listdir(args.corpus_dir))
 
   for file_no, fname in enumerate(fnames):
     input_file = os.path.join(args.corpus_dir, fname)
     output_file = os.path.join(args.output_dir, fname)
-    with tf.io.gfile.GFile(input_file, 'r') as fi:
-      with tf.io.gfile.GFile(output_file, 'w') as fo:
+    print(f'Writing {fname}...')
+    with open(input_file, 'r') as fi:
+      with open(output_file, 'w') as fo:
         for line in fi:
           line = line.strip()
           if line:
