@@ -25,11 +25,12 @@ def main():
       with tf.io.gfile.GFile(output_file, 'w') as fo:
         for line in fi:
           line = line.strip()
-          line = json.loads(line)
-          article_text = ' '.join(line['article_text'])
-          abstract_text = ' '.join(line['abstract_text']).replace('<S>', '')
-          text = f'{abstract_text} {article_text} \n'
-          fo.write(text)
+          if line:
+            line = json.loads(line)
+            article_text = ' '.join(line['article_text'])
+            abstract_text = ' '.join(line['abstract_text']).replace('<S>', '')
+            text = f'{abstract_text} {article_text} \n'
+            fo.write(text)
 
 
 if __name__ == "__main__":
