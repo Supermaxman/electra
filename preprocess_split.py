@@ -14,7 +14,7 @@ def main():
   args = parser.parse_args()
 
   idx = 0
-  fo_list = [open(os.path.join(args.output_dir, f'{i}.txt')) for i in range(args.num_files)]
+  fo_list = [open(os.path.join(args.output_dir, f'{i}.txt'), 'w') for i in range(args.num_files)]
   with open(args.corpus_path, 'r') as fi:
     for line in fi:
       line = line.strip()
