@@ -26,8 +26,10 @@ def main():
         for line in fi:
           line = line.strip()
           line = json.loads(line)
-          text = ' '.join(line['article_text'])
-          fo.write(text + '\n')
+          article_text = ' '.join(line['article_text'])
+          abstract_text = ' '.join(line['abstract_text']).replace('<S>', '')
+          text = f'{abstract_text} {article_text} \n'
+          fo.write(text)
 
 
 if __name__ == "__main__":
