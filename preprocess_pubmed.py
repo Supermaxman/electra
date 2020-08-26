@@ -29,7 +29,8 @@ def main():
             line = json.loads(line)
             article_text = ' '.join(line['article_text']).replace('\n', '')
             abstract_text = ' '.join(line['abstract_text']).replace('<S>', '').replace('\n', '')
-            text = f'{abstract_text} {article_text} \n'
+            # empty lines to split docs
+            text = f'{abstract_text} {article_text} \n\n'
             fo.write(text)
 
 
