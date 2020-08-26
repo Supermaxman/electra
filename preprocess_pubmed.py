@@ -21,8 +21,8 @@ def main():
   for file_no, fname in enumerate(fnames):
     input_file = os.path.join(args.corpus_dir, fname)
     output_file = os.path.join(args.output_dir, fname)
-    with tf.io.gfile.GFile(input_file) as fi:
-      with tf.io.gfile.GFile(output_file) as fo:
+    with tf.io.gfile.GFile(input_file, 'r') as fi:
+      with tf.io.gfile.GFile(output_file, 'w') as fo:
         for line in fi:
           line = line.strip()
           line = json.loads(line)
