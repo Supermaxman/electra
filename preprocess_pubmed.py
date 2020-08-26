@@ -27,8 +27,8 @@ def main():
           line = line.strip().replace('\n', '')
           if line:
             line = json.loads(line)
-            article_text = ' '.join(line['article_text'])
-            abstract_text = ' '.join(line['abstract_text']).replace('<S>', '')
+            article_text = ' '.join(line['article_text']).replace('\n', '')
+            abstract_text = ' '.join(line['abstract_text']).replace('<S>', '').replace('\n', '')
             text = f'{abstract_text} {article_text} \n'
             fo.write(text)
 
