@@ -7,8 +7,6 @@ def main():
   parser = argparse.ArgumentParser(description=__doc__)
   parser.add_argument("--corpus-path", required=True,
                       help="Location of pre-training text files.")
-  parser.add_argument("--vocab-path", required=True,
-                      help="Where to write out the tfrecords.")
   args = parser.parse_args()
 
   paths = [args.corpus_path]
