@@ -19,7 +19,7 @@ def main():
     for line in fi:
       line = line.strip()
       if line:
-        fo_list[idx & args.num_files].write(line + '\n\n')
+        fo_list[idx % args.num_files].write(line + '\n\n')
         idx += 1
 
   for file in fo_list:
