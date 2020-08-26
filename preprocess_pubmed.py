@@ -24,7 +24,7 @@ def main():
     with open(input_file, 'r') as fi:
       with open(output_file, 'w') as fo:
         for line in fi:
-          line = line.strip()
+          line = line.strip().replace('\n', '')
           if line:
             line = json.loads(line)
             article_text = ' '.join(line['article_text'])
