@@ -324,9 +324,9 @@ def train_or_eval(config: configure_pretraining.PretrainingConfig):
       num_shards=config.num_tpu_cores,
       tpu_job_name=config.tpu_job_name,
       per_host_input_for_training=is_per_host)
-  gpu_options = tf.compat.v1.GPUOptions(
+  gpu_options = tf.GPUOptions(
     allow_growth=True)
-  session_config = tf.compat.v1.ConfigProto(
+  session_config = tf.ConfigProto(
     gpu_options=gpu_options)
   run_config = tf.estimator.tpu.RunConfig(
       cluster=tpu_cluster_resolver,
