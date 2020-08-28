@@ -324,12 +324,17 @@ def train_or_eval(config: configure_pretraining.PretrainingConfig):
       num_shards=config.num_tpu_cores,
       tpu_job_name=config.tpu_job_name,
       per_host_input_for_training=is_per_host)
+  gpu_options = tf.compat.v1.GPUOptions(
+    allow_growth=True)
+  session_config = tf.compat.v1.ConfigProto(
+    gpu_options=gpu_options)
   run_config = tf.estimator.tpu.RunConfig(
       cluster=tpu_cluster_resolver,
       model_dir=config.model_dir,
       save_checkpoints_steps=config.save_checkpoints_steps,
       keep_checkpoint_max=config.keep_checkpoint_max,
-      tpu_config=tpu_config)
+      tpu_config=tpu_config,
+      session_config=session_config)
   model_fn = model_fn_builder(config=config)
   estimator = tf.estimator.tpu.TPUEstimator(
       use_tpu=config.use_tpu,
