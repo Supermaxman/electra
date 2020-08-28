@@ -1,9 +1,11 @@
 
 import argparse
 from tokenizers import BertWordPieceTokenizer
-from pathlib import Path
+import random
+
 
 def main():
+  random.seed(0)
   parser = argparse.ArgumentParser(description=__doc__)
   parser.add_argument("--corpus-filelist-path", required=True,
                       help="Location of pre-training text files.")
@@ -16,7 +18,10 @@ def main():
       if line:
         paths.append(line)
 
+  random.shuffle(paths)
   print(f'Nrof files: {len(paths)}')
+  paths = paths[:100_000]
+  print(f'Nrof filtered files: {len(paths)}')
 
   # Initialize a tokenizer
   tokenizer = BertWordPieceTokenizer(
@@ -27,7 +32,7 @@ def main():
   tokenizer.train(
     files=paths,
     vocab_size=40_000,
-    min_frequency=10,
+    min_frequency=4,
   )
 
   # Save files to disk
