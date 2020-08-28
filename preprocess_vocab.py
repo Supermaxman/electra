@@ -9,7 +9,7 @@ def main():
                       help="Location of pre-training text files.")
   args = parser.parse_args()
 
-  paths = list([str(x) for x in Path(args.corpus_dir).rglob("*.[tT][xX][tT]")])
+  paths = list([str(x) for x in Path(args.corpus_dir).rglob("*.[tT][xX][tT]") if x.is_file()])
   print(f'Nrof files: {len(paths)}')
 
   # Initialize a tokenizer
