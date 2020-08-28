@@ -1,8 +1,8 @@
 
 import argparse
-from tokenizers import BertWordPieceTokenizer
 from pathlib import Path
 from tqdm import tqdm
+
 
 def main():
   parser = argparse.ArgumentParser(description=__doc__)
