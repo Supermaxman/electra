@@ -1,15 +1,16 @@
 
 import argparse
 from tokenizers import BertWordPieceTokenizer
-
+from pathlib import Path
 
 def main():
   parser = argparse.ArgumentParser(description=__doc__)
-  parser.add_argument("--corpus-path", required=True,
+  parser.add_argument("--corpus-dir", required=True,
                       help="Location of pre-training text files.")
   args = parser.parse_args()
 
-  paths = [args.corpus_path]
+  paths = list([str(x) for x in Path(args.corpus_dir).rglob("*.[tT][xX][tT]")])
+  print(f'Nrof files: {len(paths)}')
 
   # Initialize a tokenizer
   tokenizer = BertWordPieceTokenizer(
