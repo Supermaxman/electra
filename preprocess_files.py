@@ -12,7 +12,7 @@ def main():
 
   count = 0
   with open('files.txt', 'w') as f:
-    for path in tqdm(Path(args.corpus_dir).rglob("*.[tT][xX][tT]")):
+    for path in tqdm(Path(args.corpus_dir).rglob('*.txt')):
       if path.is_file():
         f.write(str(path)+'\n')
         count += 1
