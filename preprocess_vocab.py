@@ -14,13 +14,13 @@ def main():
 
   # Initialize a tokenizer
   tokenizer = BertWordPieceTokenizer(
-    lowercase=True
+    lowercase=False
   )
 
   # Customize training
   tokenizer.train(
     files=paths,
-    vocab_size=30_000,
+    vocab_size=40_000,
     min_frequency=10,
   )
 
