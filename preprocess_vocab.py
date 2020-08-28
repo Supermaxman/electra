@@ -25,7 +25,7 @@ def main():
   )
 
   # Save files to disk
-  tokenizer.save_model(".", "vocab.json")
+  tokenizer.save_model(".", "vocab.txt")
 
 
 if __name__ == "__main__":
